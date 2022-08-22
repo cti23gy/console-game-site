@@ -1,0 +1,132 @@
+.games {
+    background-color: $site-background;
+    min-height: 800px;
+
+    padding-top: 50px;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: linear-gradient(to right, rgba($site-blue, 0.5), rgba($site-blue, 0.5)), 
+            url(../images/white-layer-bg.jpeg);
+
+    h1 {
+        display: flex;
+        justify-content: center;
+        font-size: 40px;
+    }
+
+    p {
+        display: flex;
+        justify-content: center;
+        font-size: 24px;
+    }
+    
+    
+    #product_game {
+        width: 100%;
+        min-height: 400px;
+        //background-color: aquamarine;
+
+
+        display: flex;
+        flex-flow: row wrap;
+
+        justify-content:flex-start;
+        padding-left: 10%;
+        
+     
+        .itemblock {
+            width: 280px;
+            height: 400px;
+      
+            padding: 10px;
+      
+            display: flex;
+            flex-direction: column;
+      
+            background-color: #fff;
+            margin: 12px;
+            box-shadow: 0px 2px 2px #999;
+      
+            .image {
+              width: 160px;
+              height: 220px;
+            }
+      
+            .content {
+              height: 200px;
+            }
+      
+            .getinfo {
+              width: 230px;
+              height: 60px;
+              border: 2px solid $site-blue;
+              text-decoration: none;
+              color: #111;
+      
+              text-align: center;
+              padding-top: 10px;
+              align-self: center;
+      
+              font-size: 16px;
+              font-family: LatoBlack;
+            }
+      
+            .getinfo:hover {
+              border: 2px solid #000;
+            }
+      
+            .saleblock {
+              display: flex;
+      
+              h4 {
+                color: #da0d0d;
+                font-family: Lato;
+              }
+            }
+      
+            .truck {
+              display: flex;
+      
+              .truck-icon {
+                width: 32px;
+                height: 20px;
+                margin-right: 10px;
+      
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-image: url(../images/truck.svg);
+              }
+            }
+      
+            h3 {
+              font-size: 16px;
+              font-family: Lato;
+            }
+      
+            h4 {
+              font-size: 20px;
+              font-family: Lato;
+            }
+      
+            h5 {
+              font-size: 16px;
+              font-family: Lato;
+            }
+      
+            p {
+              font-size: 14px;
+              font-family: Lato;
+              padding-left: 10px;
+              color: #999;
+            }
+          }
+      
+          .itemblock:hover {
+            border: 2px solid #000;
+          }
+    }
+}
+

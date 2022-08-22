@@ -1,0 +1,95 @@
+{
+    "GAME_LIST_WII": [
+        {
+            "name": "Mario Kart Wii",
+            "developer": "Nintendo",
+            "rating": "E",
+            "year": 2008,
+            "price": 53.69,
+            "stock": 18, 
+            "image": "../images/product_images/newsoupwii.png"
+
+        },
+        {
+            "name": "Xenoblade Chronicles",
+            "developer": "Monolithsoft",
+            "rating": "T",
+            "year": 2010,
+            "price": 60.61,
+            "stock": 14, 
+            "image": "../images/product_images/xenoblade1.png"
+        },
+        {
+            "name": "Wii Sports",
+            "developer": "Nintendo",
+            "rating": "E",
+            "year": 2006,
+            "price": 54.99,
+            "stock": 11, 
+            "image": "../images/product_images/wiisports.png"
+        }
+    ],
+
+    "GAME_LIST_GENESIS": [
+        {
+            "name": "Sonic the Hedgehog",
+            "developer": "SEGA",
+            "rating": "E",
+            "year": 2008,
+            "price": 53.69,
+            "stock": 18, 
+            "image": "../images/product_images/sonic1.png"
+
+        },
+        {
+            "name": "Sonic the Hedgehog 2",
+            "developer": "SEGA",
+            "rating": "E",
+            "year": 2008,
+            "price": 53.69,
+            "stock": 18, 
+            "image": "../images/product_images/sonic2.png"
+        },
+        {
+            "name": "Sonic CD",
+            "developer": "SEGA",
+            "rating": "E",
+            "year": 2008,
+            "price": 53.69,
+            "stock": 18, 
+            "image": "../images/product_images/sonicCD.png"
+        }
+    ],
+
+    "GAME_LIST_GAMECUBE": [
+        {
+            "name": "Super Mario Sunshine",
+            "developer": "Nintendo",
+            "rating": "E",
+            "year": 2004,
+            "price": 43.69,
+            "stock": 12, 
+            "image": "../images/product_images/supermariosunshine.png"
+
+        },
+        {
+            "name": "Super Smash Bros Melee",
+            "developer": "Nintendo",
+            "rating": "E",
+            "year": 2004,
+            "price": 43.69,
+            "stock": 12, 
+            "image": "../images/product_images/supersmashbrosmelee.png"
+        },
+        {
+            "name": "Paper Mario: The Thousand Year Door",
+            "developer": "Nintendo",
+            "rating": "E",
+            "year": 2004,
+            "price": 43.69,
+            "stock": 12, 
+            "image": "../images/product_images/papermariottyd.png"
+        }
+    ]
+}
+

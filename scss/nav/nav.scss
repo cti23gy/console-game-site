@@ -1,0 +1,106 @@
+nav {
+  z-index: 99;
+  height: 100px;
+  width: 100%;
+  background-color: $site-blue;
+  position: relative;
+
+  font-family: CRegular;
+  font-size: 25px;
+
+  #main-nav {
+    display: block;
+    .logo {
+      color: #d6f6ff;
+      height: 100px;
+      width: 200px;
+      position: relative;
+      padding-top: 20px;
+
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url(../images/site-logo-1.png);
+
+      display: flex;
+      left: 100px;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .link-nav-1 {
+      //background-color: rgb(243, 155, 48);
+      height: 50px;
+      width: 32%;
+      min-width: 300px;
+      margin: -100px calc(45% + 50px);
+
+      display: flex;
+      right: 100px;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .link-nav-2 {
+      //background-color: rgb(207, 243, 48);
+      height: 50px;
+      width: 32%;
+      min-width: 300px;
+      margin: 100px calc(45% + 55px);
+
+      display: flex;
+      right: 100px;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .link-nav-account {
+      //background-color: rgb(144, 172, 21);
+      height: 60px;
+      width: 160px;
+      margin: -180px calc(80% + 80px);
+
+      display: flex;
+      left: 100px;
+
+      .navlogin {
+        display: block;
+        //background-color: rgb(144, 172, 21);
+        height: 60px;
+        width: 70px;
+    
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url(../images/login-button.png);
+      }
+      .navsignout {
+        display: block;
+        //background-color: rgb(255, 214, 49);
+        height: 60px;
+        width: 70px;
+    
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url(../images/signout-button.png);
+      }
+
+      .navcart {
+        display: block;
+      }
+    }
+  }
+  
+  a {
+    text-decoration: none;
+    color: $site-white;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  nav {
+    #main-nav {
+      display: none;
+    }
+  }
+}
+

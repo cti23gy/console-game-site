@@ -1,0 +1,19 @@
+{
+  "name": "console-game-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "compile:sass": "node-sass scss/styles.scss public/css/styles.css -w",
+    "firebase local serve": "firebase serve --only hosting",
+    "firebase deploy": "firebase deploy --except functions"
+  },
+  "author": "Caleb T Imel",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^7.0.1"
+  }
+}

@@ -1,0 +1,40 @@
+.contact {
+    background-color: $site-background;
+    min-height: 560px;
+    padding: 40px 0;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: linear-gradient(to right, rgba($site-background, 0.6), rgba($site-background, 0.6)), 
+            url(../images/white-layer-bg.jpeg);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    h1 {
+        display: flex;
+        justify-content: center;
+        font-size: 40px;
+    }
+
+    h2 {
+        display: flex;
+        font-size: 30px;
+    }
+
+    p {
+        display: flex;
+        font-size: 20px;
+    }
+
+    .content {
+        background-color: $site-background;
+        height: 400px;
+        width: 640px;
+
+        padding: 50px;
+    }
+}  

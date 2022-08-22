@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html,
+  body {
+    height: 100%;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    margin-bottom: 16px;
+  }
+
+  
+  .app {
+    min-height: 100vh;
+    position: relative;
+  }
+
+
+  @font-face {
+    font-family: CRegular;
+    src: url(../fonts/Caveat-Regular.ttf);
+  }
+  
+  @font-face {
+    font-family: CBold;
+    src: url(../fonts/Caveat-Bold.ttf);
+  }
+  
+  @font-face {
+    font-family: GillLight;
+    src: url(../fonts/GillSans-Light.ttf);
+  }
+  
+  @font-face {
+    font-family: Gill;
+    src: url(../fonts/GillSans.ttf);
+  }
+  
+  @font-face {
+    font-family: GillItalic;
+    src: url(../fonts/GillSans-Italic.ttf);
+  }
+
+  @font-face {
+    font-family: LatoBlack;
+    src: url(../fonts/Lato-Black.ttf);
+  }
+
+  @font-face {
+    font-family: Lato;
+    src: url(../fonts/Lato-Regular.ttf);
+  }
+
+  h1 {
+    font-family: LatoBlack;
+  }
+
+  h2 {
+    font-family: LatoBlack;
+  }
+
+  h3 {
+    font-family: GillLight;
+  }
+
+  p {
+    font-family: GillLight;
+  }
+
+  a {
+    font-family: GillLight;
+  }

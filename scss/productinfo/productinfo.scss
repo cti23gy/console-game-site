@@ -1,0 +1,12 @@
+.productinfo {
+    background-color: $site-background;
+    min-height: 800px;
+    
+    padding-top: 50px;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: linear-gradient(to right, rgba($site-blue, 0.5), rgba($site-blue, 0.5)), 
+            url(../images/white-layer-bg.jpeg);
+}
