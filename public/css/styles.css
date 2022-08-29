@@ -551,7 +551,37 @@ footer {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: linear-gradient(to right, rgba(0, 117, 250, 0.5), rgba(0, 117, 250, 0.5)), url(../images/white-layer-bg.jpeg); }
+  background-image: linear-gradient(to right, rgba(0, 117, 250, 0.5), rgba(0, 117, 250, 0.5)), url(../images/white-layer-bg.jpeg);
+  align-items: center;
+  justify-content: center; }
+  .productinfo h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 40px; }
+  .productinfo #infocontent {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: linear-gradient(to right, rgba(192, 228, 255, 0.5), rgba(192, 228, 255, 0.5)), url(../images/white-layer-bg.jpeg); }
+    .productinfo #infocontent .itemblock {
+      display: flex; }
+      .productinfo #infocontent .itemblock .content {
+        padding: 40px; }
+      .productinfo #infocontent .itemblock .image {
+        padding-top: 80px;
+        height: 80%; }
+      .productinfo #infocontent .itemblock .buynow {
+        width: 160px;
+        height: 100px;
+        background-color: #0075fa;
+        padding: 30px;
+        border-radius: 50px;
+        font-size: 20px; }
 
 .login {
   height: 500px;

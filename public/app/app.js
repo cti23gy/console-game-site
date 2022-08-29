@@ -4,6 +4,7 @@ var CURINDEX = 0;
 var PRODUCTINFO = [];
 var CART = [];
 
+///////////Page Navigation Code Start!
 
 function route() {
     let hashTag = window.location.hash;
@@ -48,6 +49,8 @@ function navToPage(pageName) {
         loadProductInfo();
     });
 }
+
+///////////Page Navigation Code End!
 
 
 ////////////////////Firebase Code Start!
@@ -182,7 +185,7 @@ function loadCart() {
 function loadProductGames() {
     $("#product_game").empty();
     $.getJSON("data/game_list.json", function(items) {
-        $.each(items.GAME_LIST_WII, function(index, item) {
+        $.each(items.GAME_LIST, function(index, item) {
             $("#product_game").append(`
             <div class="itemblock">
                 <img class="image" src="../${item.image}"/>
@@ -227,6 +230,8 @@ function loadProductHardware() {
     });
 }
 
+///////Cart Code Start!
+
 function addToCart(curIndex) {
     if (loggedIn == true) {
     $.getJSON("data/data.json", function(items) {
@@ -261,16 +266,19 @@ function emptyCart() {
     navToPage("cart");
 }
 
+///////Cart Code End!
+
 function setProductInfo(curIndex, type) {
     //variable "type" determine what list to choose from
     PRODUCTINFO = [];
     if (type == 1) { //game
         $.getJSON("data/game_list.json", function(items) {
-            $.each(items.GAME_LIST_WII, function(index, item) {
+            $.each(items.GAME_LIST, function(index, item) {
                 if (index == curIndex) {
                     PRODUCTINFO.push({
                         image: item.image,
                         name: item.name,
+                        console: item.console,
                         developer: item.developer,
                         rating: item.rating,
                         year: item.year,
@@ -320,10 +328,15 @@ function loadProductInfo() {
                 <img class="image" src="${item.image}"/>
                 <div class="content">
                     <h3>${item.name}</h3>
-                    <div class="saleblock"><p>${item.developer}</p></div>
+                    <p>The game's console: ${item.console}</p>
+                    <p>The type of hardware:${item.type}</p>
+                    <p>${item.developer}</p>
+                    <p>${item.rating}</p>
+                    <p>${item.year}</p>
                     <h4>$${item.price}</h4>
+                    <p>${item.stock}</p>
                 </div>
-                <a href="#/getinfo" class="getinfo" onclick="setProductInfo(${index})">INFO</a>
+                <a href="#/buynow" class="buynow" onclick="addToCart(${index})">Add to Cart</a>
             </div>
             `);
         });
@@ -332,7 +345,8 @@ function loadProductInfo() {
 function loadScrollbarGames() {
     $("#scroll_items_game").empty();
     $.getJSON("data/game_list.json", function(items) {
-        $.each(items.GAME_LIST_WII, function(index, item) {
+        $.each(items.GAME_LIST, function(index, item) {
+            if (index < 5) {                                      //////If statement to limit number in scroll bar
             $("#scroll_items_game").append(`
             <div class="scroll_item">
                 <img class="image" src="${item.image}" />
@@ -340,6 +354,7 @@ function loadScrollbarGames() {
                 <p>$${item.price}</p>
             </div>
             `);
+            }
         });
     })
     .fail(function(jqxhr, textStatus, error) {

@@ -1,7 +1,8 @@
 {
-    "GAME_LIST_WII": [
+    "GAME_LIST": [
         {
             "name": "Mario Kart Wii",
+            "console": "Wii",
             "developer": "Nintendo",
             "rating": "E",
             "year": 2008,
@@ -12,6 +13,7 @@
         },
         {
             "name": "Xenoblade Chronicles",
+            "console": "Wii",
             "developer": "Monolithsoft",
             "rating": "T",
             "year": 2010,
@@ -21,18 +23,17 @@
         },
         {
             "name": "Wii Sports",
+            "console": "Wii",
             "developer": "Nintendo",
             "rating": "E",
             "year": 2006,
             "price": 54.99,
             "stock": 11, 
             "image": "../images/product_images/wiisports.png"
-        }
-    ],
-
-    "GAME_LIST_GENESIS": [
+        },
         {
             "name": "Sonic the Hedgehog",
+            "console": "Sega Genesis",
             "developer": "SEGA",
             "rating": "E",
             "year": 2008,
@@ -43,6 +44,7 @@
         },
         {
             "name": "Sonic the Hedgehog 2",
+            "console": "Sega Genesis",
             "developer": "SEGA",
             "rating": "E",
             "year": 2008,
@@ -52,18 +54,17 @@
         },
         {
             "name": "Sonic CD",
+            "console": "Sega Genesis",
             "developer": "SEGA",
             "rating": "E",
             "year": 2008,
             "price": 53.69,
             "stock": 18, 
             "image": "../images/product_images/sonicCD.png"
-        }
-    ],
-
-    "GAME_LIST_GAMECUBE": [
+        },
         {
             "name": "Super Mario Sunshine",
+            "console": "Gamecube",
             "developer": "Nintendo",
             "rating": "E",
             "year": 2004,
@@ -74,6 +75,7 @@
         },
         {
             "name": "Super Smash Bros Melee",
+            "console": "Gamecube",
             "developer": "Nintendo",
             "rating": "E",
             "year": 2004,
@@ -83,6 +85,7 @@
         },
         {
             "name": "Paper Mario: The Thousand Year Door",
+            "console": "Gamecube",
             "developer": "Nintendo",
             "rating": "E",
             "year": 2004,
