@@ -573,14 +573,15 @@ footer {
       .productinfo #infocontent .itemblock .content {
         padding: 40px; }
       .productinfo #infocontent .itemblock .image {
-        padding-top: 80px;
+        padding-top: 40px;
         height: 80%; }
       .productinfo #infocontent .itemblock .buynow {
         width: 160px;
-        height: 100px;
+        height: 80px;
         background-color: #0075fa;
+        margin-top: 100px;
         padding: 30px;
-        border-radius: 50px;
+        border-radius: 40px;
         font-size: 20px; }
 
 .login {
