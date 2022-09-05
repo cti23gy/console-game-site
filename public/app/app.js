@@ -12,6 +12,9 @@ function route() {
     
     if(!pageID) {
         navToPage("home");
+    } else if (pageID == "cart") {
+        loadCart();
+        navToPage("cart");
     } else if (pageID == "loginfire") { //login buttons
         loginfire();
         navToPage("login"); 
@@ -21,6 +24,17 @@ function route() {
     } else if (pageID == "signoutfire") {
         signOut();
         navToPage("login");
+    } else if (pageID == "buynow") {
+        //addToCart(); onclick happens first then this...
+        navToPage("cart");
+        if (loggedIn) {
+            updateModal("cart");
+        } else {
+            updateModal("errorlogin");
+        }
+    } else if (pageID == "emptycart") {
+        navToPage("cart");
+        updateModal("dumpcart");
     }
     else {
         navToPage(pageID);
@@ -47,6 +61,8 @@ function navToPage(pageName) {
         loadProductGames();
         loadProductHardware();
         loadProductInfo();
+
+        loadCart();
     });
 }
 
@@ -152,36 +168,6 @@ function signOut() {
 ////////////////////Firebase Code End!
 
 
-
-function loadCart() { 
-    $("#cartitem").empty();
-        if (loggedIn == false) {
-            $("#cartitem").append(`
-            <h1>Y o u &nbsp; a r e &nbsp; n o t &nbsp; L o g g e d &nbsp; I n</h1>
-            `);
-        }
-        else if (CART.length == 0) {
-            $("#cartitem").append(`
-            <h1>Y o u &nbsp; d o n ' t &nbsp; h a v e &nbsp; a n y &nbsp; i t e m s &nbsp; i n &nbsp; y o u r &nbsp; s h o p p i n g &nbsp; c a r t</h1>
-            `);
-        }  else {
-        $.each(CART, function(index, item) {
-            $("#cartitem").append(`
-            <div class="cartblock">
-            <img class="image" src="${item.image}"/>
-            <div class="content">
-                <h3>${item.name}</h3>
-                <div class="saleblock"><h4>$${item.saleprice}</h4> <p>with Keurig Starter Set</p></div>
-                <h4>$${item.price}</h4>
-                <h5>★★★★★ ${item.scorereviews} | (${item.totalreviews})</h5>
-                <div class="truck"><div class="truck-icon"></div><h5>Free Shipping</h5></div>
-            </div>
-            </div>
-            `);
-        });
-        }
-}
-
 function loadProductGames() {
     $("#product_game").empty();
     $.getJSON("data/game_list.json", function(items) {
@@ -232,36 +218,96 @@ function loadProductHardware() {
 
 ///////Cart Code Start!
 
-function addToCart(curIndex) {
+function addToCart(curIndex, type) {
     if (loggedIn == true) {
-    $.getJSON("data/data.json", function(items) {
-        $.each(items.COFFEE_ITEMS, function(index, item) {
-            if (index == curIndex) {
-                CART.push({
-                    image: item.image,
-                    name: item.name,
-                    price: item.price,
-                    saleprice: item.saleprice,
-                    scorereviews: item.scorereviews,
-                    totalreviews: item.totalreviews
+        if (type == 1) {
+            $.getJSON("data/game_list.json", function(items) {
+                $.each(items.GAME_LIST, function(index, item) {
+                    if (index == curIndex) {
+                        CART.push({
+                            image: item.image,
+                            name: item.name,
+                            console: item.console,
+                            developer: item.developer,
+                            rating: item.rating,
+                            year: item.year,
+                            price: item.price,
+                            stock: item.stock
+                        });
+                        console.log(CART);
+                    }
+                    
                 });
-                console.log(CART);
-            }
-            
-        });
-    })
-    .fail(function(jqxhr, textStatus, error) {
-        console.log(jqxhr);
-        console.log(textStatus);
-        console.log(error);
-    });
+            })
+            .fail(function(jqxhr, textStatus, error) {
+                console.log(jqxhr);
+                console.log(textStatus);
+                console.log(error);
+            });
+        }
+        if (type == 2) {
+            $.getJSON("data/hardware_list.json", function(items) {
+                $.each(items.HARDWARE_LIST, function(index, item) {
+                    if (index == curIndex) {
+                        CART.push({
+                            image: item.image,
+                            name: item.name,
+                            developer: item.developer,
+                            price: item.price,
+                            stock: item.stock
+                        });
+                        console.log(CART);
+                    }
+                    
+                });
+            })
+            .fail(function(jqxhr, textStatus, error) {
+                console.log(jqxhr);
+                console.log(textStatus);
+                console.log(error);
+            });
+        }
     } else {
         console.log("not logged in");
     }
 }
 
+function loadCart() { 
+    $("#cartitem").empty();
+        if (loggedIn == false) {
+            $("#cartitem").append(`
+            <h1>You are not logged in!</h1>
+            `);
+        }
+        else if (CART.length == 0) {
+            $("#cartitem").append(`
+            <h1>No items in shopping Cart</h1>
+            `);
+        } else {
+            $.each(CART, function(index, item) {
+                $("#cartitem").append(`
+                <div class="cartblock">
+                <img class="image" src="${item.image}"/>
+                <div class="content">
+                    <h3>${item.name}</h3>
+                    <h4>$${item.developer}</h4>
+                    <h4>$${item.price}</h4>
+                    <a href="#/cart" class="remove" onclick="emptyCartItem(${index})">Remove from Cart</a>
+                </div>
+                </div>
+            `);
+        });
+        }
+}
+
 function emptyCart() {
     CART = [];
+    console.log(CART);
+    navToPage("cart");
+}
+
+function emptyCartItem(curIndex) {
+    CART.splice(curIndex, 1);
     console.log(CART);
     navToPage("cart");
 }
@@ -276,6 +322,8 @@ function setProductInfo(curIndex, type) {
             $.each(items.GAME_LIST, function(index, item) {
                 if (index == curIndex) {
                     PRODUCTINFO.push({
+                        tempIndex: index,
+                        type: type,
                         image: item.image,
                         name: item.name,
                         console: item.console,
@@ -284,7 +332,6 @@ function setProductInfo(curIndex, type) {
                         year: item.year,
                         price: item.price,
                         stock: item.stock
-                        
                     });
                     console.log(PRODUCTINFO);
                 }
@@ -300,6 +347,8 @@ function setProductInfo(curIndex, type) {
             $.each(items.HARDWARE_LIST, function(index, item) {
                 if (index == curIndex) {
                     PRODUCTINFO.push({
+                        tempIndex: index,
+                        type: type,
                         image: item.image,
                         name: item.name,
                         type: item.type,
@@ -323,22 +372,39 @@ function setProductInfo(curIndex, type) {
 function loadProductInfo() {
     $("#infocontent").empty();
         $.each(PRODUCTINFO, function(index, item) {
-            $("#infocontent").append(`
-            <div class="itemblock">
-                <img class="image" src="${item.image}"/>
-                <div class="content">
-                    <h3>${item.name}</h3>
-                    <p>The game's console: ${item.console}</p>
-                    <p>The type of hardware:${item.type}</p>
-                    <p>${item.developer}</p>
-                    <p>${item.rating}</p>
-                    <p>${item.year}</p>
-                    <h4>$${item.price}</h4>
-                    <p>${item.stock}</p>
+            if (item.type == 1) {
+                $("#infocontent").append(`
+                <div class="itemblock">
+                    <img class="image" src="${item.image}"/>
+                    <div class="content">
+                        <h3>${item.name}</h3>
+                        <p>The game's console: ${item.console}</p>
+                        <p>${item.developer}</p>
+                        <p>${item.rating}</p>
+                        <p>${item.year}</p>
+                        <h4>$${item.price}</h4>
+                        <p>${item.stock}</p>
+                    </div>
+                    <a href="#/buynow" class="buynow" onclick="addToCart(${item.tempIndex}, ${item.type})">Add to Cart</a>
                 </div>
-                <a href="#/buynow" class="buynow" onclick="addToCart(${index})">Add to Cart</a>
-            </div>
-            `);
+                `);
+            }
+            if (item.type == 2) {
+                $("#infocontent").append(`
+                <div class="itemblock">
+                    <img class="image" src="${item.image}"/>
+                    <div class="content">
+                        <h3>${item.name}</h3>
+                        <p>The type of hardware:${item.type}</p>
+                        <p>${item.developer}</p>
+                        <h4>$${item.price}</h4>
+                        <p>${item.stock}</p>
+                    </div>
+                    <a href="#/buynow" class="buynow" onclick="addToCart(${item.tempIndex}, ${item.type})">Add to Cart</a>
+                </div>
+                `);
+            }
+            
         });
 }
 
@@ -384,6 +450,61 @@ function loadScrollbarHardware() {
     });
 }
 
+
+function updateModal(modal_code) {
+    $("#modal").empty();
+    if (modal_code == "login") {
+        $("#modal").append(`
+        <div class="modalblock">
+            <h1>Log In</h1>
+            <p>You are now logged in!</p>
+        </div>
+        `);
+    } else if (modal_code == "signout") {
+        $("#modal").append(`
+        <div class="modalblock">
+            <h1>Sign Out</h1>
+            <p>You are now signed out!</p>
+        </div>
+        `);
+    } else if (modal_code == "cart") {
+        $("#modal").append(`
+        <div class="modalblock">
+            <h1>Cart</h1>
+            <p>Item added to Cart!</p>
+        </div>
+        `);
+    } else if (modal_code == "dumpcart") {
+        $("#modal").append(`
+        <div class="modalblock">
+            <h1>Cart</h1>
+            <p>Cart has been emptied!</p>
+        </div>
+        `);
+    } else if (modal_code == "errorlogin") {
+        $("#modal").append(`
+        <div class="modalblock">
+            <h1>Please Log In</h1>
+            <p>You are not logged in!</p>
+        </div>
+        `);
+    } else {
+        $("#modal").append(`
+        <div class="modalblock">
+            <h1>Notice</h1>
+            <p>There is a Modal Error</p>
+        </div>
+        `);
+    }
+    $('#modal').css("display", "block");
+}
+
+function addModalListener() {
+    $("#app").click(function(e){
+        $('#modal').css("display", "none");
+    });
+}
+
 function initListeners() {
     $(window).on("hashchange", route);
     route();
@@ -392,5 +513,6 @@ function initListeners() {
 $(document).ready(function() {
     //navToPage("home");
     //initFirebase();
+    addModalListener();
     initListeners();
 });

@@ -76,29 +76,6 @@
               border: 2px solid #000;
             }
       
-            .saleblock {
-              display: flex;
-      
-              h4 {
-                color: #da0d0d;
-                font-family: Lato;
-              }
-            }
-      
-            .truck {
-              display: flex;
-      
-              .truck-icon {
-                width: 32px;
-                height: 20px;
-                margin-right: 10px;
-      
-                background-size: cover;
-                background-repeat: no-repeat;
-                background-position: center;
-                background-image: url(../images/truck.svg);
-              }
-            }
       
             h3 {
               font-size: 16px;
