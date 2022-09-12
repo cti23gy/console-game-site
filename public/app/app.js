@@ -1,5 +1,7 @@
 var loggedIn = false;
 
+var scrollCount = 3;
+
 var CURINDEX = 0;
 var PRODUCTINFO = [];
 var CART = [];
@@ -314,16 +316,16 @@ function emptyCartItem(curIndex) {
 
 ///////Cart Code End!
 
-function setProductInfo(curIndex, type) {
+function setProductInfo(curIndex, curType) {
     //variable "type" determine what list to choose from
     PRODUCTINFO = [];
-    if (type == 1) { //game
+    if (curType == 1) { //game
         $.getJSON("data/game_list.json", function(items) {
             $.each(items.GAME_LIST, function(index, item) {
                 if (index == curIndex) {
                     PRODUCTINFO.push({
                         tempIndex: index,
-                        type: type,
+                        type: curType,
                         image: item.image,
                         name: item.name,
                         console: item.console,
@@ -342,16 +344,16 @@ function setProductInfo(curIndex, type) {
             console.log(textStatus);
             console.log(error);
         });
-    } else if (type == 2) { //hardware
+    } else if (curType == 2) { //hardware
         $.getJSON("data/hardware_list.json", function(items) {
             $.each(items.HARDWARE_LIST, function(index, item) {
                 if (index == curIndex) {
                     PRODUCTINFO.push({
                         tempIndex: index,
-                        type: type,
+                        type: curType,
                         image: item.image,
                         name: item.name,
-                        type: item.type,
+                        product_type: item.product_type,
                         developer: item.developer,
                         price: item.price,
                         stock: item.stock
@@ -383,22 +385,23 @@ function loadProductInfo() {
                         <p>${item.rating}</p>
                         <p>${item.year}</p>
                         <h4>$${item.price}</h4>
-                        <p>${item.stock}</p>
+                        <p>Number in Stock: ${item.stock}</p>
                     </div>
                     <a href="#/buynow" class="buynow" onclick="addToCart(${item.tempIndex}, ${item.type})">Add to Cart</a>
                 </div>
                 `);
             }
             if (item.type == 2) {
+                console.log("hardware works now!!");
                 $("#infocontent").append(`
                 <div class="itemblock">
                     <img class="image" src="${item.image}"/>
                     <div class="content">
                         <h3>${item.name}</h3>
-                        <p>The type of hardware:${item.type}</p>
+                        <p>The type of hardware:${item.product_type}</p>
                         <p>${item.developer}</p>
                         <h4>$${item.price}</h4>
-                        <p>${item.stock}</p>
+                        <p>Number in Stock: ${item.stock}</p>
                     </div>
                     <a href="#/buynow" class="buynow" onclick="addToCart(${item.tempIndex}, ${item.type})">Add to Cart</a>
                 </div>
@@ -412,7 +415,7 @@ function loadScrollbarGames() {
     $("#scroll_items_game").empty();
     $.getJSON("data/game_list.json", function(items) {
         $.each(items.GAME_LIST, function(index, item) {
-            if (index < 5) {                                      //////If statement to limit number in scroll bar
+            if (index < scrollCount) {                                      //////If statement to limit number in scroll bar
             $("#scroll_items_game").append(`
             <div class="scroll_item">
                 <img class="image" src="${item.image}" />
@@ -434,6 +437,7 @@ function loadScrollbarHardware() {
     $("#scroll_items_hardware").empty();
     $.getJSON("data/hardware_list.json", function(items) {
         $.each(items.HARDWARE_LIST, function(index, item) {
+            if (index < scrollCount) {
             $("#scroll_items_hardware").append(`
             <div class="scroll_item">
                 <img class="image" src="${item.image}" />
@@ -441,6 +445,7 @@ function loadScrollbarHardware() {
                 <p>$${item.price}</p>
             </div>
             `);
+            }
         });
     })
     .fail(function(jqxhr, textStatus, error) {
@@ -450,7 +455,7 @@ function loadScrollbarHardware() {
     });
 }
 
-
+/////////Modal Start!
 function updateModal(modal_code) {
     $("#modal").empty();
     if (modal_code == "login") {
@@ -504,6 +509,27 @@ function addModalListener() {
         $('#modal').css("display", "none");
     });
 }
+/////////////Modal End!
+
+function checkScreenListener() {
+    /*const mediaQuery = window.matchMedia('(min-width: 768px)');
+    if (mediaQuery.matches) {
+        scrollCount = 5;
+    }
+    if (mediaQuery.matches) {
+        scrollCount = 3;
+    }*/
+    //$(window).on('(min-width: 768px)', scrollCount = 4);
+    const mediaQuery = window.matchMedia("(min-width: 576px)");
+
+    
+    if (mediaQuery.matches) {
+        scrollCount = 5;
+    }
+    else {
+        scrollCount = 2;
+    }
+}
 
 function initListeners() {
     $(window).on("hashchange", route);
@@ -515,4 +541,6 @@ $(document).ready(function() {
     //initFirebase();
     addModalListener();
     initListeners();
+
+    checkScreenListener();
 });

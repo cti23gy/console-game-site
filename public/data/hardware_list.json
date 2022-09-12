@@ -2,7 +2,7 @@
     "HARDWARE_LIST": [
         {
             "name": "Wii",
-            "type": "console/controller/etc",
+            "product_type": "console/controller/etc",
             "developer": "Nintendo",
             "price": 249.99,
             "stock": 10,
@@ -10,7 +10,7 @@
         },
         {
             "name": "Sega Genesis",
-            "type": "console/controller/etc",
+            "product_type": "console/controller/etc",
             "developer": "SEGA",
             "price": 149.99,
             "stock": 17,
@@ -18,7 +18,7 @@
         },
         {
             "name": "GameCube",
-            "type": "console/controller/etc",
+            "product_type": "console/controller/etc",
             "developer": "Nintendo",
             "price": 169.99,
             "stock": 10,

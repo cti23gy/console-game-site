@@ -41,8 +41,8 @@
             }
 
             .image {
-                padding-top: 40px;
-                height: 80%;
+                padding: 40px;
+                height: 100px;
             }
 
             .buynow {
@@ -53,7 +53,11 @@
                 margin-top: 100px;
                 padding: 30px;
                 border-radius: 40px;
+            }
 
+            a {
+                text-decoration: none;
+                color: $site-white;
                 font-size: 20px;
             }
         }

@@ -18,7 +18,8 @@ p {
 
 .app {
   min-height: 100vh;
-  position: relative; }
+  position: relative;
+  z-index: 1; }
 
 @font-face {
   font-family: CRegular;
@@ -253,10 +254,10 @@ nav {
 #modal {
   z-index: 99;
   display: none;
-  background-color: #e9e9e9;
+  background-color: #c0e4ff;
   width: 400px;
   height: 250px;
-  border: 2px solid #000;
+  border: 1px solid #000;
   position: fixed;
   left: calc(50% - 200px);
   z-index: 99;
@@ -519,7 +520,7 @@ footer {
     font-size: 20px; }
   .contact .content {
     background-color: #c0e4ff;
-    height: 400px;
+    height: 550px;
     width: 640px;
     padding: 50px; }
 
@@ -623,15 +624,18 @@ footer {
       .productinfo #infocontent .itemblock .content {
         padding: 40px; }
       .productinfo #infocontent .itemblock .image {
-        padding-top: 40px;
-        height: 80%; }
+        padding: 40px;
+        height: 100px; }
       .productinfo #infocontent .itemblock .buynow {
         width: 160px;
         height: 80px;
         background-color: #0075fa;
         margin-top: 100px;
         padding: 30px;
-        border-radius: 40px;
+        border-radius: 40px; }
+      .productinfo #infocontent .itemblock a {
+        text-decoration: none;
+        color: #fff;
         font-size: 20px; }
 
 .login {
