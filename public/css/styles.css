@@ -387,7 +387,7 @@ footer {
     padding-left: 10%; }
     .games #product_game .itemblock {
       width: 280px;
-      height: 400px;
+      height: 420px;
       padding: 10px;
       display: flex;
       flex-direction: column;
@@ -454,7 +454,7 @@ footer {
     padding-left: 10%; }
     .hardware #product_hardware .itemblock {
       width: 280px;
-      height: 400px;
+      height: 420px;
       padding: 10px;
       display: flex;
       flex-direction: column;
@@ -536,11 +536,82 @@ footer {
   align-items: center;
   justify-content: center;
   flex-direction: column; }
+  .search h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 40px; }
+  .search p {
+    display: flex;
+    justify-content: center;
+    font-size: 24px; }
+  .search #keyword_search {
+    width: 300px;
+    height: 40px;
+    font-size: 24px;
+    padding-left: 5px; }
+  .search #search_button {
+    width: 100px;
+    height: 40px;
+    font-size: 24px; }
+  .search #search_results {
+    width: 100%;
+    min-height: 400px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    padding-left: 10%; }
+    .search #search_results .itemblock {
+      width: 280px;
+      height: 420px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      background-color: #fff;
+      margin: 12px;
+      box-shadow: 0px 2px 2px #999; }
+      .search #search_results .itemblock .image_g {
+        width: 160px;
+        height: 220px; }
+      .search #search_results .itemblock .image_h {
+        width: 200px;
+        height: 220px; }
+      .search #search_results .itemblock .content {
+        height: 200px; }
+      .search #search_results .itemblock .getinfo {
+        width: 230px;
+        height: 60px;
+        border: 2px solid #0075fa;
+        text-decoration: none;
+        color: #111;
+        text-align: center;
+        padding-top: 10px;
+        align-self: center;
+        font-size: 16px;
+        font-family: LatoBlack; }
+      .search #search_results .itemblock .getinfo:hover {
+        border: 2px solid #000; }
+      .search #search_results .itemblock h3 {
+        font-size: 16px;
+        font-family: Lato; }
+      .search #search_results .itemblock h4 {
+        font-size: 20px;
+        font-family: Lato; }
+      .search #search_results .itemblock h5 {
+        font-size: 16px;
+        font-family: Lato; }
+      .search #search_results .itemblock p {
+        font-size: 14px;
+        font-family: Lato;
+        padding-left: 10px;
+        color: #999; }
+    .search #search_results .itemblock:hover {
+      border: 2px solid #000; }
 
 .cart {
   width: 100%;
   height: 100%;
-  background-color: #c0e4ff; }
+  background-color: #c0e4ff;
+  padding: 40px 0; }
   .cart h1 {
     display: flex;
     align-items: center;
@@ -623,9 +694,12 @@ footer {
       display: flex; }
       .productinfo #infocontent .itemblock .content {
         padding: 40px; }
-      .productinfo #infocontent .itemblock .image {
-        padding: 40px;
-        height: 100px; }
+      .productinfo #infocontent .itemblock .image_g {
+        height: 340px;
+        width: 220px; }
+      .productinfo #infocontent .itemblock .image_h {
+        height: 340px;
+        width: 300px; }
       .productinfo #infocontent .itemblock .buynow {
         width: 160px;
         height: 80px;

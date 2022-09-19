@@ -14,6 +14,9 @@ function route() {
     
     if(!pageID) {
         navToPage("home");
+    } else if (pageID == "keyword_search") { //search button
+        searchQuery();
+        navToPage("search"); 
     } else if (pageID == "cart") {
         loadCart();
         navToPage("cart");
@@ -316,6 +319,7 @@ function emptyCartItem(curIndex) {
 
 ///////Cart Code End!
 
+
 function setProductInfo(curIndex, curType) {
     //variable "type" determine what list to choose from
     PRODUCTINFO = [];
@@ -377,7 +381,7 @@ function loadProductInfo() {
             if (item.type == 1) {
                 $("#infocontent").append(`
                 <div class="itemblock">
-                    <img class="image" src="${item.image}"/>
+                    <img class="image_g" src="${item.image}"/>
                     <div class="content">
                         <h3>${item.name}</h3>
                         <p>The game's console: ${item.console}</p>
@@ -392,10 +396,9 @@ function loadProductInfo() {
                 `);
             }
             if (item.type == 2) {
-                console.log("hardware works now!!");
                 $("#infocontent").append(`
                 <div class="itemblock">
-                    <img class="image" src="${item.image}"/>
+                    <img class="image_h" src="${item.image}"/>
                     <div class="content">
                         <h3>${item.name}</h3>
                         <p>The type of hardware:${item.product_type}</p>
@@ -531,9 +534,93 @@ function checkScreenListener() {
     }
 }
 
+
+/////Search Code Start!
+
+function searchQuery() {
+    
+}
+
+
+/////////Search Code End!
+
+
 function initListeners() {
     $(window).on("hashchange", route);
     route();
+
+    $(document).on('click','#search_button',function() {
+        let query = $("#keyword_search").val();
+        $("#keyword_search").val("");
+        query = query.toLowerCase(); 
+
+        let emptyQueryCheck = 0; //not implemented correctly yet
+
+        $("#search_results").empty();
+        if (query != "") {
+            $.getJSON("data/game_list.json", function(items) {
+                $.each(items.GAME_LIST, function(index, item) {
+                    let lc_name = item.name.toLowerCase();
+                    let lc_console = item.console.toLowerCase();
+                    let lc_developer = item.developer.toLowerCase();
+                    if (lc_name.includes(query) || lc_console.includes(query) || lc_developer.includes(query)) {
+                        $("#search_results").append(`
+                        <div class="itemblock">
+                            <img class="image_g" src="../${item.image}"/>
+                            <div class="content">
+                                <h3>${item.name}</h3>
+                                <div class="saleblock"><p>${item.developer}</p></div>
+                                <h4>$${item.price}</h4>
+                            </div>
+                            <a href="#/productinfo" class="getinfo" onclick="setProductInfo(${index},1)">INFO</a>
+                        </div>
+                        `);
+                    } else {
+                        emptyQueryCheck++;
+                    }
+                });
+            })
+            .fail(function(jqxhr, textStatus, error) {
+                console.log(jqxhr);
+                console.log(textStatus);
+                console.log(error);
+            });
+            $.getJSON("data/hardware_list.json", function(items) {
+                $.each(items.HARDWARE_LIST, function(index, item) {
+                    let lc_name = item.name.toLowerCase();
+                    let lc_product_type = item.product_type.toLowerCase();
+                    let lc_developer = item.developer.toLowerCase();
+                    if (lc_name.includes(query) || lc_product_type.includes(query) || lc_developer.includes(query)) {
+                        $("#search_results").append(`
+                        <div class="itemblock">
+                            <img class="image_h" src="../${item.image}"/>
+                            <div class="content">
+                                <h3>${item.name}</h3>
+                                <div class="saleblock"><p>${item.developer}</p></div>
+                                <h4>$${item.price}</h4>
+                            </div>
+                            <a href="#/productinfo" class="getinfo" onclick="setProductInfo(${index},2)">INFO</a>
+                        </div>
+                        `);
+                    }
+                    else {
+                        emptyQueryCheck++;
+                    }
+                });
+            })
+            .fail(function(jqxhr, textStatus, error) {
+                console.log(jqxhr);
+                console.log(textStatus);
+                console.log(error);
+            });
+        } else {
+            $("#search_results").append(`
+                <h1>Search query cannot be blank!</h1>
+            `);
+        }
+
+    });
+
 }
 
 $(document).ready(function() {

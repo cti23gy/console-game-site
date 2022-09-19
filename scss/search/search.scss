@@ -14,4 +14,116 @@
     justify-content: center;
     flex-direction: column;
 
+    h1 {
+        display: flex;
+        justify-content: center;
+        font-size: 40px;
+    }
+
+    p {
+        display: flex;
+        justify-content: center;
+        font-size: 24px;
+    }
+
+    #keyword_search {
+        width: 300px;
+        height: 40px;
+        font-size: 24px;
+        padding-left: 5px;
+    }
+
+    #search_button {
+        width: 100px;
+        height: 40px;
+        font-size: 24px;
+    }
+
+    #search_results {
+        width: 100%;
+        min-height: 400px;
+        //background-color: aquamarine;
+
+
+        display: flex;
+        flex-flow: row wrap;
+
+        justify-content:flex-start;
+        padding-left: 10%;
+        
+     
+        .itemblock {
+            width: 280px;
+            height: 420px;
+      
+            padding: 10px;
+      
+            display: flex;
+            flex-direction: column;
+      
+            background-color: #fff;
+            margin: 12px;
+            box-shadow: 0px 2px 2px #999;
+      
+            .image_g {
+              width: 160px;
+              height: 220px;
+            }
+
+            .image_h {
+                width: 200px;
+                height: 220px;
+            }
+      
+            .content {
+              height: 200px;
+            }
+      
+            .getinfo {
+              width: 230px;
+              height: 60px;
+              border: 2px solid $site-blue;
+              text-decoration: none;
+              color: #111;
+      
+              text-align: center;
+              padding-top: 10px;
+              align-self: center;
+      
+              font-size: 16px;
+              font-family: LatoBlack;
+            }
+      
+            .getinfo:hover {
+              border: 2px solid #000;
+            }
+      
+            h3 {
+              font-size: 16px;
+              font-family: Lato;
+            }
+      
+            h4 {
+              font-size: 20px;
+              font-family: Lato;
+            }
+      
+            h5 {
+              font-size: 16px;
+              font-family: Lato;
+            }
+      
+            p {
+              font-size: 14px;
+              font-family: Lato;
+              padding-left: 10px;
+              color: #999;
+            }
+          }
+      
+          .itemblock:hover {
+            border: 2px solid #000;
+          }
+    }
+
 }
