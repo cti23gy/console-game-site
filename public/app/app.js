@@ -1,6 +1,6 @@
 var loggedIn = false;
 
-var scrollCount = 3;
+var scrollCount = 2;
 
 var CURINDEX = 0;
 var PRODUCTINFO = [];
@@ -522,35 +522,27 @@ function checkScreenListener() {
     if (mediaQuery.matches) {
         scrollCount = 3;
     }*/
-    //$(window).on('(min-width: 768px)', scrollCount = 4);
-    const mediaQuery = window.matchMedia("(min-width: 576px)");
-
+    //$(window).on('min-width: 576px', scrollCount = 4);
+    //const mediaQuery = window.matchMedia("(min-width: 576px)");
+    $(window).on($(window).width() < 576, scrollCount = 2); 
+    $(window).on($(window).width() > 576, scrollCount = 4); 
     
+    /*
     if (mediaQuery.matches) {
         scrollCount = 5;
     }
     else {
         scrollCount = 2;
-    }
+    }*/
+    
 }
+
 
 
 /////Search Code Start!
 
 function searchQuery() {
-    
-}
-
-
-/////////Search Code End!
-
-
-function initListeners() {
-    $(window).on("hashchange", route);
-    route();
-
-    $(document).on('click','#search_button',function() {
-        let query = $("#keyword_search").val();
+    let query = $("#keyword_search").val();
         $("#keyword_search").val("");
         query = query.toLowerCase(); 
 
@@ -618,7 +610,17 @@ function initListeners() {
                 <h1>Search query cannot be blank!</h1>
             `);
         }
+}
 
+/////////Search Code End!
+
+
+function initListeners() {
+    $(window).on("hashchange", route);
+    route();
+
+    $(document).on('click','#search_button', function() {
+        searchQuery();
     });
 
 }
