@@ -22,14 +22,6 @@ p {
   z-index: 1; }
 
 @font-face {
-  font-family: CRegular;
-  src: url(../fonts/Caveat-Regular.ttf); }
-
-@font-face {
-  font-family: CBold;
-  src: url(../fonts/Caveat-Bold.ttf); }
-
-@font-face {
   font-family: GillLight;
   src: url(../fonts/GillSans-Light.ttf); }
 
@@ -320,47 +312,60 @@ footer {
     width: 100%;
     background-color: #0b417e;
     display: flex; }
-    .home .scrollbar .left_button {
+    .home .scrollbar #left_button_g {
       background-color: #3288ff;
       height: 300px;
       width: 50px;
       float: left;
-      font-size: 40px;
-      padding-top: 125px;
-      padding-left: 15px; }
-    .home .scrollbar .right_button {
+      z-index: 2;
+      font-size: 40px; }
+    .home .scrollbar #right_button_g {
       background-color: #3288ff;
       height: 300px;
       width: 50px;
       float: right;
-      font-size: 40px;
-      padding-top: 125px;
-      padding-right: 15px; }
-    .home .scrollbar .left_button:hover {
+      z-index: 2;
+      font-size: 40px; }
+    .home .scrollbar #left_button_h {
+      background-color: #3288ff;
+      height: 300px;
+      width: 50px;
+      float: left;
+      z-index: 2;
+      font-size: 40px; }
+    .home .scrollbar #right_button_h {
+      background-color: #3288ff;
+      height: 300px;
+      width: 50px;
+      float: right;
+      z-index: 2;
+      font-size: 40px; }
+    .home .scrollbar #left_button_g:hover {
       background-color: #93b6e9; }
-    .home .scrollbar .right_button:hover {
+    .home .scrollbar #right_button_g:hover {
+      background-color: #93b6e9; }
+    .home .scrollbar #left_button_h:hover {
+      background-color: #93b6e9; }
+    .home .scrollbar #right_button_h:hover {
       background-color: #93b6e9; }
     .home .scrollbar .scroll_items {
       background-color: #c0e4ff;
       width: 93.4%;
       height: 100%;
       display: flex;
-      justify-content: center; }
+      overflow-x: hidden; }
       .home .scrollbar .scroll_items .scroll_item {
         background-color: #fff;
         width: 200px;
         height: 250px;
-        margin: 25px 1%;
-        padding: 5px; }
+        margin: 15px 50px;
+        padding: 5px;
+        z-index: 1; }
         .home .scrollbar .scroll_items .scroll_item .image {
           width: 160px;
           height: 160px; }
       .home .scrollbar .scroll_items .scroll_item:hover {
         border: 2px solid #000; }
-
-@media only screen and (max-width: 768px) {
-  .home .scrollbar .scroll_items .scroll_item {
-    margin: 15px 4px; } }
 
 .games {
   background-color: #c0e4ff;

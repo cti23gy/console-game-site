@@ -1,6 +1,7 @@
 var loggedIn = false;
 
 var scrollCount = 2;
+var scrollDistance = 0;
 
 var CURINDEX = 0;
 var PRODUCTINFO = [];
@@ -418,7 +419,7 @@ function loadScrollbarGames() {
     $("#scroll_items_game").empty();
     $.getJSON("data/game_list.json", function(items) {
         $.each(items.GAME_LIST, function(index, item) {
-            if (index < scrollCount) {                                      //////If statement to limit number in scroll bar
+            //if (index < scrollCount) {                                      //////If statement to limit number in scroll bar
             $("#scroll_items_game").append(`
             <div class="scroll_item">
                 <img class="image" src="${item.image}" />
@@ -426,7 +427,7 @@ function loadScrollbarGames() {
                 <p>$${item.price}</p>
             </div>
             `);
-            }
+            //}
         });
     })
     .fail(function(jqxhr, textStatus, error) {
@@ -514,30 +515,6 @@ function addModalListener() {
 }
 /////////////Modal End!
 
-function checkScreenListener() {
-    /*const mediaQuery = window.matchMedia('(min-width: 768px)');
-    if (mediaQuery.matches) {
-        scrollCount = 5;
-    }
-    if (mediaQuery.matches) {
-        scrollCount = 3;
-    }*/
-    //$(window).on('min-width: 576px', scrollCount = 4);
-    //const mediaQuery = window.matchMedia("(min-width: 576px)");
-    $(window).on($(window).width() < 576, scrollCount = 2); 
-    $(window).on($(window).width() > 576, scrollCount = 4); 
-    
-    /*
-    if (mediaQuery.matches) {
-        scrollCount = 5;
-    }
-    else {
-        scrollCount = 2;
-    }*/
-    
-}
-
-
 
 /////Search Code Start!
 
@@ -615,6 +592,29 @@ function searchQuery() {
 /////////Search Code End!
 
 
+/////Animations Start!
+
+const smallDevice = window.matchMedia("(min-width: 768px)");
+
+var changeExecuted = 0;
+var doChangeUpdate = false;
+
+function handleDeviceChange(e) {
+    if (e.matches) {
+        scrollCount = 4; 
+    } else {
+        scrollCount = 2;
+    }
+    
+}
+
+
+
+/////Animations End!
+
+
+
+
 function initListeners() {
     $(window).on("hashchange", route);
     route();
@@ -623,6 +623,41 @@ function initListeners() {
         searchQuery();
     });
 
+    $(document).on('click','#left_button_g', function() {
+        scrollDistance -= 200;
+        if (scrollDistance < 0) {
+            scrollDistance = 1000;
+        }
+        console.log(scrollDistance);
+        document.getElementById('scroll_items_game').scrollTo({
+            left: scrollDistance,
+            behavior: 'smooth'
+         });
+    });
+    $(document).on('click','#right_button_g', function() {
+        scrollDistance += 500;
+        if (scrollDistance > 1000) {
+            scrollDistance = 0;
+        }
+        console.log(scrollDistance);
+        document.getElementById('scroll_items_game').scrollTo({
+            left: scrollDistance,
+            behavior: 'smooth'
+         });
+    });
+    $(document).on('click','#left_button_h', function() {
+        
+    });
+    $(document).on('click','#right_button_h', function() {
+        
+    });
+
+    /*
+    $(window).resize(function() {
+        handleDeviceChange(smallDevice);
+        loadScrollbarGames();
+    });
+*/
 }
 
 $(document).ready(function() {
@@ -631,5 +666,5 @@ $(document).ready(function() {
     addModalListener();
     initListeners();
 
-    checkScreenListener();
+    //handleDeviceChange(smallDevice);
 });

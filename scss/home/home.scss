@@ -28,31 +28,49 @@
         background-color: $site-dark-blue;
         display: flex;
 
-        .left_button {
+        #left_button_g {
             background-color: rgb(50, 136, 255);
             height: 300px;
             width: 50px;
             float: left;
-
+            z-index: 2;
             font-size: 40px;
-            padding-top: 125px;
-            padding-left: 15px;
         }
-        .right_button {
+        #right_button_g {
             background-color: rgb(50, 136, 255);
             height: 300px;
             width: 50px;
             float: right;
-
+            z-index: 2;
             font-size: 40px;
-            padding-top: 125px;
-            padding-right: 15px;
+        }
+        #left_button_h {
+            background-color: rgb(50, 136, 255);
+            height: 300px;
+            width: 50px;
+            float: left;
+            z-index: 2;
+            font-size: 40px;
+        }
+        #right_button_h {
+            background-color: rgb(50, 136, 255);
+            height: 300px;
+            width: 50px;
+            float: right;
+            z-index: 2;
+            font-size: 40px;
         }
 
-        .left_button:hover {
+        #left_button_g:hover {
             background-color: rgb(147, 182, 233);
         }
-        .right_button:hover {
+        #right_button_g:hover {
+            background-color: rgb(147, 182, 233);
+        }
+        #left_button_h:hover {
+            background-color: rgb(147, 182, 233);
+        }
+        #right_button_h:hover {
             background-color: rgb(147, 182, 233);
         }
 
@@ -63,14 +81,15 @@
             width: 93.4%;
             height: 100%;
             display: flex;
-
-            justify-content: center;
+            overflow-x: hidden;
+            //justify-content: center;
             .scroll_item {
                 background-color: $site-white;
                 width: 200px;
                 height: 250px;
-                margin: 25px 1%;
+                margin: 15px 50px;
                 padding: 5px;
+                z-index: 1;
     
                 .image {
                     width: 160px;
@@ -88,12 +107,13 @@
 }  
 
 
+
 @media only screen and (max-width: 768px) {
     .home {
         .scrollbar {
             .scroll_items {
                 .scroll_item {
-                    margin: 15px 4px;
+                    //margin: 15px 4px;
                 }
             }
         }
