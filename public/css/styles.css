@@ -616,13 +616,17 @@ footer {
   width: 100%;
   height: 100%;
   background-color: #c0e4ff;
-  padding: 40px 0; }
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column; }
   .cart h1 {
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: GillLight;
     font-size: 36px; }
+  .cart .cartcontent {
+    display: flex; }
   .cart #cartitem {
     width: 100%;
     min-height: 600px;
@@ -631,11 +635,10 @@ footer {
     flex-flow: row wrap;
     justify-content: center; }
     .cart #cartitem .cartblock {
-      width: 280px;
-      height: 400px;
+      width: 640px;
+      height: 220px;
       padding: 10px;
       display: flex;
-      flex-direction: column;
       background-color: #fff;
       margin: 12px;
       box-shadow: 0px 2px 2px #999; }
@@ -643,7 +646,16 @@ footer {
         width: 180px;
         height: 200px; }
       .cart #cartitem .cartblock .content {
-        height: 200px; }
+        height: 200px;
+        margin: 20px 100px; }
+      .cart #cartitem .cartblock .remove {
+        width: 100px;
+        height: 40px;
+        background-color: #0b417e;
+        color: #fff;
+        text-decoration: none;
+        padding: 5px;
+        border-radius: 2px; }
       .cart #cartitem .cartblock h3 {
         font-size: 16px;
         font-family: LatoBlack; }
@@ -657,19 +669,26 @@ footer {
         font-size: 14px;
         font-family: LatoBlack;
         color: #999; }
-  .cart .empty-cart-button {
-    text-decoration: none;
-    display: flex;
-    margin: 20px auto;
-    background-color: #000;
-    color: #fff;
-    font-size: 24px;
-    font-family: LatoBlack;
-    width: 200px;
-    height: 80px;
-    border-radius: 40px;
-    justify-content: center;
-    align-items: center; }
+  .cart .checkoutcart {
+    background-color: #0075fa;
+    width: 30%;
+    height: 600px;
+    padding: 20px; }
+    .cart .checkoutcart #total_price {
+      background-color: #0075fa;
+      color: #fff;
+      width: 100%;
+      height: 400px;
+      margin: auto; }
+    .cart .checkoutcart #checkout_button {
+      width: 100px;
+      height: 40px;
+      background-color: #0b417e;
+      color: #fff;
+      text-decoration: none;
+      padding: 5px;
+      border-radius: 2px;
+      border-color: #fff; }
 
 .productinfo {
   background-color: #c0e4ff;

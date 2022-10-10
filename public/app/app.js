@@ -1,7 +1,8 @@
 var loggedIn = false;
 
 var scrollCount = 2;
-var scrollDistance = 0;
+var scrollDistance_g = 0;
+var scrollDistance_h = 0;
 
 var CURINDEX = 0;
 var PRODUCTINFO = [];
@@ -69,6 +70,7 @@ function navToPage(pageName) {
         loadProductInfo();
 
         loadCart();
+        showCartPrice();
     });
 }
 
@@ -296,7 +298,7 @@ function loadCart() {
                 <img class="image" src="${item.image}"/>
                 <div class="content">
                     <h3>${item.name}</h3>
-                    <h4>$${item.developer}</h4>
+                    <h4>${item.developer}</h4>
                     <h4>$${item.price}</h4>
                     <a href="#/cart" class="remove" onclick="emptyCartItem(${index})">Remove from Cart</a>
                 </div>
@@ -316,6 +318,30 @@ function emptyCartItem(curIndex) {
     CART.splice(curIndex, 1);
     console.log(CART);
     navToPage("cart");
+}
+
+function showCartPrice() { 
+    let subtotal_price = 0.0;
+
+    $.each(CART, function(index, item) {
+        subtotal_price += item.price;
+    });
+
+    //tax
+    let tax = subtotal_price * 0.065;
+    let total_price = subtotal_price + tax;
+
+    subtotal_price = subtotal_price.toFixed(2);
+    tax = tax.toFixed(2);
+    total_price = total_price.toFixed(2);
+
+    console.log(subtotal_price, tax, total_price);
+    //$("#total_price").empty();
+    $("#total_price").append(`
+        <p>Subtotal: ${subtotal_price}</p>
+        <p>Tax: ${tax}</p>
+        <p>Total: ${total_price}</p>
+    `);
 }
 
 ///////Cart Code End!
@@ -624,32 +650,48 @@ function initListeners() {
     });
 
     $(document).on('click','#left_button_g', function() {
-        scrollDistance -= 200;
-        if (scrollDistance < 0) {
-            scrollDistance = 1000;
+        scrollDistance_g -= 500;
+        if (scrollDistance_g < 0) {
+            scrollDistance_g = 1000;
         }
-        console.log(scrollDistance);
+        console.log(scrollDistance_g);
         document.getElementById('scroll_items_game').scrollTo({
-            left: scrollDistance,
+            left: scrollDistance_g,
             behavior: 'smooth'
          });
     });
     $(document).on('click','#right_button_g', function() {
-        scrollDistance += 500;
-        if (scrollDistance > 1000) {
-            scrollDistance = 0;
+        scrollDistance_g += 500;
+        if (scrollDistance_g > 1000) {
+            scrollDistance_g = 0;
         }
-        console.log(scrollDistance);
+        console.log(scrollDistance_g);
         document.getElementById('scroll_items_game').scrollTo({
-            left: scrollDistance,
+            left: scrollDistance_g,
             behavior: 'smooth'
          });
     });
     $(document).on('click','#left_button_h', function() {
-        
+        scrollDistance_h -= 500;
+        if (scrollDistance_h < 0) {
+            scrollDistance_h = 1000;
+        }
+        console.log(scrollDistance_h);
+        document.getElementById('scroll_items_hardware').scrollTo({
+            left: scrollDistance_h,
+            behavior: 'smooth'
+         });
     });
     $(document).on('click','#right_button_h', function() {
-        
+        scrollDistance_h += 500;
+        if (scrollDistance_h > 1000) {
+            scrollDistance_h = 0;
+        }
+        console.log(scrollDistance_h);
+        document.getElementById('scroll_items_hardware').scrollTo({
+            left: scrollDistance_h,
+            behavior: 'smooth'
+         });
     });
 
     /*
