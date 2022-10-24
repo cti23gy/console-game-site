@@ -1,6 +1,5 @@
 var loggedIn = false;
 
-var scrollCount = 2;
 var scrollDistance_g = 0;
 var scrollDistance_h = 0;
 
@@ -428,7 +427,7 @@ function loadProductInfo() {
                     <img class="image_h" src="${item.image}"/>
                     <div class="content">
                         <h3>${item.name}</h3>
-                        <p>The type of hardware:${item.product_type}</p>
+                        <p>The type of hardware: ${item.product_type}</p>
                         <p>${item.developer}</p>
                         <h4>$${item.price}</h4>
                         <p>Number in Stock: ${item.stock}</p>
@@ -467,7 +466,6 @@ function loadScrollbarHardware() {
     $("#scroll_items_hardware").empty();
     $.getJSON("data/hardware_list.json", function(items) {
         $.each(items.HARDWARE_LIST, function(index, item) {
-            if (index < scrollCount) {
             $("#scroll_items_hardware").append(`
             <div class="scroll_item">
                 <img class="image" src="${item.image}" />
@@ -475,7 +473,7 @@ function loadScrollbarHardware() {
                 <p>$${item.price}</p>
             </div>
             `);
-            }
+            
         });
     })
     .fail(function(jqxhr, textStatus, error) {
@@ -649,10 +647,11 @@ function initListeners() {
         searchQuery();
     });
 
-    $(document).on('click','#left_button_g', function() {
-        scrollDistance_g -= 500;
+    $(document).on('click','#left_button_g', function() { 
+        let current_scroll_length = $("#scroll_items_game").width();
+        scrollDistance_g -= (current_scroll_length / 3);
         if (scrollDistance_g < 0) {
-            scrollDistance_g = 1000;
+            scrollDistance_g = current_scroll_length;
         }
         console.log(scrollDistance_g);
         document.getElementById('scroll_items_game').scrollTo({
@@ -661,8 +660,9 @@ function initListeners() {
          });
     });
     $(document).on('click','#right_button_g', function() {
-        scrollDistance_g += 500;
-        if (scrollDistance_g > 1000) {
+        let current_scroll_length = $("#scroll_items_game").width();
+        scrollDistance_g += (current_scroll_length / 3);
+        if (scrollDistance_g > current_scroll_length) {
             scrollDistance_g = 0;
         }
         console.log(scrollDistance_g);
@@ -672,9 +672,10 @@ function initListeners() {
          });
     });
     $(document).on('click','#left_button_h', function() {
-        scrollDistance_h -= 500;
+        let current_scroll_length = $("#scroll_items_hardware").width();
+        scrollDistance_h -= (current_scroll_length / 3);
         if (scrollDistance_h < 0) {
-            scrollDistance_h = 1000;
+            scrollDistance_h = current_scroll_length;
         }
         console.log(scrollDistance_h);
         document.getElementById('scroll_items_hardware').scrollTo({
@@ -683,8 +684,10 @@ function initListeners() {
          });
     });
     $(document).on('click','#right_button_h', function() {
-        scrollDistance_h += 500;
-        if (scrollDistance_h > 1000) {
+        let current_scroll_length = $("#scroll_items_hardware").width();
+        console.log(current_scroll_length);
+        scrollDistance_h += (current_scroll_length / 3);
+        if (scrollDistance_h > current_scroll_length) {
             scrollDistance_h = 0;
         }
         console.log(scrollDistance_h);

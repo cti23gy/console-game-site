@@ -15,6 +15,11 @@
         font-size: 36px;
     }
 
+    h2 {
+      color: $site-white;
+    }
+    
+
     .cartcontent {
       display: flex;
     }
@@ -90,6 +95,8 @@
         width: 30%;
         height: 600px;
         padding: 20px;
+        
+        
 
         #total_price {
           background-color: $site-blue;

@@ -9,6 +9,31 @@
             "image": "../images/product_images/wii.png"
         },
         {
+            "name": "Wii Remote",
+            "product_type": "controller",
+            "developer": "Nintendo",
+            "price": 11.99,
+            "stock": 7,
+            "image": "../images/product_images/wiiremote.png"
+        },
+        {
+            "name": "Wii Nunchuck",
+            "product_type": "controller",
+            "developer": "Nintendo",
+            "price": 6.99,
+            "stock": 5,
+            "image": "../images/product_images/wiinunchuck.png"
+        },
+        {
+            "name": "Wii Remote and Nunchuck",
+            "product_type": "controller",
+            "developer": "Nintendo",
+            "price": 15.99,
+            "stock": 8,
+            "image": "../images/product_images/wiicontrollerpackage.png"
+        },
+
+        {
             "name": "Sega Genesis",
             "product_type": "console",
             "developer": "SEGA",
@@ -17,23 +42,33 @@
             "image": "../images/product_images/segagenisis.png"
         },
         {
-            "name": "GameCube",
+            "name": "Sega Genesis Controller",
+            "product_type": "controller",
+            "developer": "Nintendo",
+            "price": 14.99,
+            "stock": 8,
+            "image": "../images/product_images/genesiscontroller.png"
+        },
+
+        {
+            "name": "Gamecube",
             "product_type": "console",
             "developer": "Nintendo",
             "price": 169.99,
             "stock": 10,
             "image": "../images/product_images/gamecube.png"
         },
-
-
         {
-            "name": "Wii Remote",
+            "name": "Gamecube Controller",
             "product_type": "controller",
             "developer": "Nintendo",
-            "price": 39.99,
-            "stock": 17,
-            "image": "../images/product_images/wii.png"
+            "price": 59.99,
+            "stock": 8,
+            "image": "../images/product_images/gamecubecontroller.png"
         }
+
+
+        
     ]
 }
 

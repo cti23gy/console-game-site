@@ -5,6 +5,7 @@
 
 html,
 body {
+  width: 100vw;
   height: 100%; }
 
 h1,
@@ -625,6 +626,8 @@ footer {
     justify-content: center;
     font-family: GillLight;
     font-size: 36px; }
+  .cart h2 {
+    color: #fff; }
   .cart .cartcontent {
     display: flex; }
   .cart #cartitem {
