@@ -44,7 +44,7 @@
         {
             "name": "Sega Genesis Controller",
             "product_type": "controller",
-            "developer": "Nintendo",
+            "developer": "SEGA",
             "price": 14.99,
             "stock": 8,
             "image": "../images/product_images/genesiscontroller.png"

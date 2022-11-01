@@ -1,8 +1,5 @@
 var loggedIn = false;
 
-var scrollDistance_g = 0;
-var scrollDistance_h = 0;
-
 var CURINDEX = 0;
 var PRODUCTINFO = [];
 var CART = [];
@@ -647,55 +644,7 @@ function initListeners() {
         searchQuery();
     });
 
-    $(document).on('click','#left_button_g', function() { 
-        let current_scroll_length = $("#scroll_items_game").width();
-        scrollDistance_g -= (current_scroll_length / 3);
-        if (scrollDistance_g < 0) {
-            scrollDistance_g = current_scroll_length;
-        }
-        console.log(scrollDistance_g);
-        document.getElementById('scroll_items_game').scrollTo({
-            left: scrollDistance_g,
-            behavior: 'smooth'
-         });
-    });
-    $(document).on('click','#right_button_g', function() {
-        let current_scroll_length = $("#scroll_items_game").width();
-        scrollDistance_g += (current_scroll_length / 3);
-        if (scrollDistance_g > current_scroll_length) {
-            scrollDistance_g = 0;
-        }
-        console.log(scrollDistance_g);
-        document.getElementById('scroll_items_game').scrollTo({
-            left: scrollDistance_g,
-            behavior: 'smooth'
-         });
-    });
-    $(document).on('click','#left_button_h', function() {
-        let current_scroll_length = $("#scroll_items_hardware").width();
-        scrollDistance_h -= (current_scroll_length / 3);
-        if (scrollDistance_h < 0) {
-            scrollDistance_h = current_scroll_length;
-        }
-        console.log(scrollDistance_h);
-        document.getElementById('scroll_items_hardware').scrollTo({
-            left: scrollDistance_h,
-            behavior: 'smooth'
-         });
-    });
-    $(document).on('click','#right_button_h', function() {
-        let current_scroll_length = $("#scroll_items_hardware").width();
-        console.log(current_scroll_length);
-        scrollDistance_h += (current_scroll_length / 3);
-        if (scrollDistance_h > current_scroll_length) {
-            scrollDistance_h = 0;
-        }
-        console.log(scrollDistance_h);
-        document.getElementById('scroll_items_hardware').scrollTo({
-            left: scrollDistance_h,
-            behavior: 'smooth'
-         });
-    });
+    
 
     /*
     $(window).resize(function() {
