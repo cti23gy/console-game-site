@@ -66,9 +66,29 @@
             "stock": 8,
             "image": "../images/product_images/gamecubecontroller.png"
         }
-
-
-        
+    ],
+    "HARDWARE_LIST_SCROLL": [
+        {
+            "listId": 0
+        },
+        {
+            "listId": 1
+        },
+        {
+            "listId": 3
+        },
+        {
+            "listId": 4
+        },
+        {
+            "listId": 5
+        },
+        {
+            "listId": 6
+        },
+        {
+            "listId": 7
+        }
     ]
 }
 

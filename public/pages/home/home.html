@@ -1,15 +1,18 @@
 <nav>
   <div id="main-nav">
     <div class="logo"></div>
-    <div class="link-nav-1">
-      <a href="#/home">Home</a>
-      <a href="#/contact">Contact</a>
-      <a class="navcart" href="#/cart">Cart</a>
-    </div>
-    <div class="link-nav-2">
-      <a href="#/games">Games</a>
-      <a href="#/hardware">Hardware</a>
-      <a href="#/search">Search</a>
+
+    <div class="link-nav-block">
+      <div class="link-nav-1">
+        <a href="#/home">Home</a>
+        <a href="#/contact">Contact</a>
+        <a class="navcart" href="#/cart">Cart</a>
+      </div>
+      <div class="link-nav-2">
+        <a href="#/games">Games</a>
+        <a href="#/hardware">Hardware</a>
+        <a href="#/search">Search</a>
+      </div>
     </div>
     <div class="link-nav-account">
       <a class="navlogin" href="#/login"></a>
@@ -26,15 +29,11 @@
 
     <ul id="menu">
       <a href="#/home">Home</a>
-      <br />
       <a href="#/games">Games</a>
-      <br />
       <a href="#/hardware">Hardware</a>
-      <br />
       <a href="#/contact">Contact</a>
-      <br />
       <a href="#/search">Search</a>
-      <br />
+
       <a class="navcart" href="#/cart">Cart</a>
       <a class="navlogin" href="#/login">Login</a>
       <a class="navsignout" href="#/signoutfire">Signout</a>
@@ -47,12 +46,16 @@
 
   <h2>Games</h2>
   <div class="scrollbar">
+    <div id="left_pan_g" class="left_pan"></div>
     <div id="scroll_items_game" class="scroll_items"></div>
+    <div id="right_pan_g" class="right_pan"></div>
   </div>
   <br />
   <h2>Consoles</h2>
   <div class="scrollbar">
+    <div id="left_pan_h" class="left_pan"></div>
     <div id="scroll_items_hardware" class="scroll_items"></div>
+    <div id="left_pan_h" class="right_pan"></div>
   </div>
 </div>
 

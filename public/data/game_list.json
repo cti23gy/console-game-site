@@ -93,6 +93,30 @@
             "stock": 12, 
             "image": "../images/product_images/papermariottyd.png"
         }
+    ],
+    "GAME_LIST_SCROLL": [
+        {
+            "listId": 0
+        },
+        {
+            "listId": 2
+        },
+        {
+            "listId": 3
+        },
+        {
+            "listId": 4
+        },
+        {
+            "listId": 5
+        },
+        {
+            "listId": 6
+        },
+        {
+            "listId": 7
+        }
     ]
 }
+
 

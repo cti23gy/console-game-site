@@ -69,7 +69,7 @@ nav {
   font-family: CRegular;
   font-size: 25px; }
   nav #main-nav {
-    display: block; }
+    display: flex; }
     nav #main-nav .logo {
       color: #d6f6ff;
       height: 100px;
@@ -84,20 +84,24 @@ nav {
       left: 100px;
       justify-content: space-around;
       align-items: center; }
+    nav #main-nav .link-nav-block {
+      flex-direction: column;
+      width: 40%;
+      position: fixed;
+      float: right;
+      right: 150px; }
     nav #main-nav .link-nav-1 {
       height: 50px;
-      width: 32%;
+      width: 100%;
       min-width: 300px;
-      margin: -100px calc(45% + 50px);
       display: flex;
       right: 100px;
       justify-content: space-around;
       align-items: center; }
     nav #main-nav .link-nav-2 {
       height: 50px;
-      width: 32%;
+      width: 100%;
       min-width: 300px;
-      margin: 100px calc(45% + 55px);
       display: flex;
       right: 100px;
       justify-content: space-around;
@@ -105,9 +109,10 @@ nav {
     nav #main-nav .link-nav-account {
       height: 60px;
       width: 160px;
-      margin: -180px calc(80% + 80px);
-      display: flex;
-      left: 100px; }
+      position: fixed;
+      float: right;
+      right: 0;
+      top: 20px; }
       nav #main-nav .link-nav-account .navlogin {
         display: block;
         height: 60px;
@@ -137,8 +142,9 @@ nav {
 #menuToggle {
   display: none;
   position: relative;
+  width: 50px;
   top: 40px;
-  left: 50px;
+  margin-left: 50px;
   z-index: 1;
   -webkit-user-select: none;
   user-select: none; }
@@ -154,6 +160,7 @@ nav {
 #menuToggle input {
   display: block;
   width: 40px;
+  padding-left: 50px;
   height: 32px;
   position: absolute;
   top: -7px;
@@ -215,13 +222,13 @@ nav {
 #menu {
   z-index: 1;
   position: absolute;
-  width: 100%;
+  width: 400px;
   margin: -100px 0 0 -50px;
   padding: 50px;
   padding-top: 125px;
   display: flex;
   flex-direction: column;
-  background: #cdcdcd;
+  background: #c0e4ff;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   /* to stop flickering of text in safari */
@@ -309,7 +316,6 @@ footer {
     font-size: 30px;
     padding-top: 20px; }
   .home .scrollbar {
-    margin: 80px 0;
     height: 300px;
     width: 100%;
     background-color: #0b417e;
@@ -332,6 +338,22 @@ footer {
           height: 160px; }
       .home .scrollbar .scroll_items .scroll_item:hover {
         border: 2px solid #000; }
+    .home .scrollbar .left_pan {
+      width: 50px;
+      height: 100%;
+      background-color: rgba(11, 65, 126, 0.5);
+      z-index: 4;
+      display: fixed; }
+    .home .scrollbar .right_pan {
+      width: 50px;
+      height: 100%;
+      background-color: rgba(11, 65, 126, 0.5);
+      z-index: 4;
+      display: fixed; }
+    .home .scrollbar .left_pan:hover {
+      background-color: rgba(0, 117, 250, 0.5); }
+    .home .scrollbar .right_pan:hover {
+      background-color: rgba(0, 117, 250, 0.5); }
 
 .games {
   background-color: #c0e4ff;
@@ -355,7 +377,8 @@ footer {
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
-    padding-left: 10%; }
+    padding-left: 10%;
+    padding-bottom: 20px; }
     .games #product_game .itemblock {
       width: 280px;
       height: 420px;
@@ -422,7 +445,8 @@ footer {
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
-    padding-left: 10%; }
+    padding-left: 10%;
+    padding-bottom: 20px; }
     .hardware #product_hardware .itemblock {
       width: 280px;
       height: 420px;
@@ -577,6 +601,8 @@ footer {
         color: #999; }
     .search #search_results .itemblock:hover {
       border: 2px solid #000; }
+  .search #search_fail {
+    display: block; }
 
 .cart {
   width: 100%;

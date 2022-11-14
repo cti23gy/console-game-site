@@ -444,15 +444,17 @@ function loadScrollbarGames() {
     $("#scroll_items_game").empty();
     $.getJSON("data/game_list.json", function(items) {
         $.each(items.GAME_LIST, function(index, item) {
-            //if (index < scrollCount) {                                      //////If statement to limit number in scroll bar
-            $("#scroll_items_game").append(`
-            <div class="scroll_item">
-                <img class="image" src="${item.image}" />
-                <h3>${item.name}</h3>
-                <p>$${item.price}</p>
-            </div>
-            `);
-            //}
+            $.each(items.GAME_LIST_SCROLL, function(index_s, item_s) {            
+                if (index == item_s.listId) {
+                    $("#scroll_items_game").append(`
+                    <div class="scroll_item">
+                        <img class="image" src="${item.image}" />
+                        <h3>${item.name}</h3>
+                        <p>$${item.price}</p>
+                    </div>
+                    `);
+                }
+            });
         });
     })
     .fail(function(jqxhr, textStatus, error) {
@@ -466,14 +468,17 @@ function loadScrollbarHardware() {
     $("#scroll_items_hardware").empty();
     $.getJSON("data/hardware_list.json", function(items) {
         $.each(items.HARDWARE_LIST, function(index, item) {
-            $("#scroll_items_hardware").append(`
-            <div class="scroll_item">
-                <img class="image" src="${item.image}" />
-                <h3>${item.name}</h3>
-                <p>$${item.price}</p>
-            </div>
-            `);
-            
+            $.each(items.HARDWARE_LIST_SCROLL, function(index_s, item_s) {            
+                if (index == item_s.listId) {
+                    $("#scroll_items_hardware").append(`
+                    <div class="scroll_item">
+                        <img class="image" src="${item.image}" />
+                        <h3>${item.name}</h3>
+                        <p>$${item.price}</p>
+                    </div>
+                    `);
+                }
+            });
         });
     })
     .fail(function(jqxhr, textStatus, error) {
@@ -645,8 +650,6 @@ function handleDeviceChange(e) {
     
 }
 
-
-
 /////Animations End!
 
 
@@ -660,7 +663,9 @@ function initListeners() {
         searchQuery();
     });
 
-    
+    $(document).on('click','#left_pan_g', function() {
+        console.log
+    });
 
     /*
     $(window).resize(function() {
