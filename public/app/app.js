@@ -3,6 +3,12 @@ var queryFoundG;
 var queryFoundH;
 var Result = false;
 
+var w = window.innerWidth;
+var scrollbarGames = 0;
+var scrollbarHardware = 0;
+var barLength = 600;
+var move_l = 300;
+
 var CURINDEX = 0;
 var PRODUCTINFO = [];
 var CART = [];
@@ -449,7 +455,7 @@ function loadScrollbarGames() {
                     $("#scroll_items_game").append(`
                     <div class="scroll_item">
                         <img class="image" src="${item.image}" />
-                        <h3>${item.name}</h3>
+                        <a href="#/productinfo" class="getinfo" onclick="setProductInfo(${item_s.listId},1)">${item.name}</a>
                         <p>$${item.price}</p>
                     </div>
                     `);
@@ -473,7 +479,7 @@ function loadScrollbarHardware() {
                     $("#scroll_items_hardware").append(`
                     <div class="scroll_item">
                         <img class="image" src="${item.image}" />
-                        <h3>${item.name}</h3>
+                        <a href="#/productinfo" class="getinfo" onclick="setProductInfo(${item_s.listId},2)">${item.name}</a>
                         <p>$${item.price}</p>
                     </div>
                     `);
@@ -636,53 +642,116 @@ function searchQuery() {
 
 /////Animations Start!
 
-const smallDevice = window.matchMedia("(min-width: 768px)");
+function scrollbarListeners() {
+    $(document).on('click','#left_pan_g', function() {
+        if (scrollbarGames > 0) {
+            document.getElementById("scroll_items_game").scrollTo({
+                left: scrollbarGames - move_l,
+                behavior: 'smooth'
+            });
+            scrollbarGames -= move_l;
+        } else {
+            document.getElementById("scroll_items_game").scrollTo({
+                left: barLength,
+                behavior: 'smooth'
+            });
+            scrollbarGames = barLength;
+        }
+    });
+    $(document).on('click','#right_pan_g', function() {
+        if (scrollbarGames < barLength) {
+            document.getElementById("scroll_items_game").scrollTo({
+                left: scrollbarGames + move_l,
+                behavior: 'smooth'
+            });  
+            scrollbarGames += move_l;  
+        } else {
+            document.getElementById("scroll_items_game").scrollTo({
+                left: 0,
+                behavior: 'smooth'
+            });
+            scrollbarGames = 0;
+        }
+    });
 
-var changeExecuted = 0;
-var doChangeUpdate = false;
+    $(document).on('click','#left_pan_h', function() {
+        if (scrollbarHardware > 0) {
+            document.getElementById("scroll_items_hardware").scrollTo({
+                left: scrollbarHardware - move_l,
+                behavior: 'smooth'
+            });
+            scrollbarHardware -= move_l;
+        } else {
+            document.getElementById("scroll_items_hardware").scrollTo({
+                left: barLength,
+                behavior: 'smooth'
+            });
+            scrollbarHardware = barLength;
+        }
+    });
+    $(document).on('click','#right_pan_h', function() {
+        if (scrollbarHardware < barLength) {
+            document.getElementById("scroll_items_hardware").scrollTo({
+                left: scrollbarHardware + move_l,
+                behavior: 'smooth'
+            });  
+            scrollbarHardware += move_l;  
+        } else {
+            document.getElementById("scroll_items_hardware").scrollTo({
+                left: 0,
+                behavior: 'smooth'
+            });
+            scrollbarHardware = 0;
+        }
+    });
 
-function handleDeviceChange(e) {
-    if (e.matches) {
-        scrollCount = 4; 
-    } else {
-        scrollCount = 2;
-    }
     
 }
 
+function resizeListener() {
+    if (window.innerWidth <= 768) {
+        barLength = 1350;
+        move_l = 270;
+    } else {
+        barLength = 600;
+        move_l = 300;
+    }
+    $(window).resize(function() {
+        w = window.innerWidth;
+        if (w <= 768) {
+            barLength = 1350;
+            move_l = 270;
+        } else {
+            barLength = 600;
+            move_l = 300;
+        }
+    });
+}
+
 /////Animations End!
-
-
 
 
 function initListeners() {
     $(window).on("hashchange", route);
     route();
 
+    scrollbarListeners();
+    resizeListener();
+
+    $(document).on('click','a', function() {    
+        window.scrollTo(0, 0);
+    });
+
     $(document).on('click','#search_button', function() {
         searchQuery();
     });
-
-    $(document).on('click','#left_pan_g', function() {
-        console.log
-    });
-
-    /*
-    $(window).resize(function() {
-        handleDeviceChange(smallDevice);
-        loadScrollbarGames();
-    });
-*/
 }
 
 $(document).ready(function() {
-    //navToPage("home");
-    //initFirebase();
     addModalListener();
     initListeners();
 
     $.ajaxSetup({
         async: false
     });
-    //handleDeviceChange(smallDevice);
 });

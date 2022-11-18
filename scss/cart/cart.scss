@@ -122,6 +122,13 @@
 
 @media only screen and (max-width: 768px) {
   .cart {
-      //flex-direction: unset;
+      #cartitem {
+        .cartblock {
+          width: 460px;
+          .content {
+            margin: 20px 60px;
+          }
+        }
+      }
   }
 }

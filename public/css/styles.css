@@ -87,7 +87,7 @@ nav {
     nav #main-nav .link-nav-block {
       flex-direction: column;
       width: 40%;
-      position: fixed;
+      position: absolute;
       float: right;
       right: 150px; }
     nav #main-nav .link-nav-1 {
@@ -109,7 +109,7 @@ nav {
     nav #main-nav .link-nav-account {
       height: 60px;
       width: 160px;
-      position: fixed;
+      position: absolute;
       float: right;
       right: 0;
       top: 20px; }
@@ -239,7 +239,7 @@ nav {
 #menu a {
   padding: 10px 0;
   font-size: 22px;
-  font-family: GillItalic; }
+  font-family: Lato; }
 
 /*
    * And let's slide it in from the left
@@ -325,35 +325,48 @@ footer {
       width: 100%;
       height: 100%;
       display: flex;
-      overflow-x: auto; }
+      overflow-x: hidden; }
       .home .scrollbar .scroll_items .scroll_item {
         background-color: #fff;
         width: 200px;
         height: 250px;
-        margin: 15px 50px;
+        margin: 25px 55px;
         padding: 5px;
         z-index: 1; }
         .home .scrollbar .scroll_items .scroll_item .image {
           width: 160px;
           height: 160px; }
+        .home .scrollbar .scroll_items .scroll_item a {
+          font-size: 18px;
+          color: #000; }
+        .home .scrollbar .scroll_items .scroll_item p {
+          padding-top: 10px; }
       .home .scrollbar .scroll_items .scroll_item:hover {
         border: 2px solid #000; }
     .home .scrollbar .left_pan {
-      width: 50px;
+      width: 75px;
       height: 100%;
-      background-color: rgba(11, 65, 126, 0.5);
+      background-color: #0b417e;
       z-index: 4;
-      display: fixed; }
+      display: fixed;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url(../images/left-arrow.png); }
     .home .scrollbar .right_pan {
-      width: 50px;
+      width: 75px;
       height: 100%;
-      background-color: rgba(11, 65, 126, 0.5);
+      background-color: #0b417e;
       z-index: 4;
-      display: fixed; }
+      display: fixed;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url(../images/right-arrow.png); }
     .home .scrollbar .left_pan:hover {
-      background-color: rgba(0, 117, 250, 0.5); }
+      background-color: #0075fa; }
     .home .scrollbar .right_pan:hover {
-      background-color: rgba(0, 117, 250, 0.5); }
+      background-color: #0075fa; }
 
 .games {
   background-color: #c0e4ff;
@@ -684,6 +697,12 @@ footer {
       border-radius: 2px;
       border-color: #fff; }
 
+@media only screen and (max-width: 768px) {
+  .cart #cartitem .cartblock {
+    width: 460px; }
+    .cart #cartitem .cartblock .content {
+      margin: 20px 60px; } }
+
 .productinfo {
   background-color: #c0e4ff;
   min-height: 800px;
@@ -729,6 +748,11 @@ footer {
         text-decoration: none;
         color: #fff;
         font-size: 20px; }
+
+@media only screen and (max-width: 768px) {
+  .productinfo #infocontent .itemblock {
+    flex-direction: column;
+    padding-bottom: 30px; } }
 
 .login {
   height: 500px;
@@ -789,3 +813,10 @@ footer {
       background-color: #0075fa; }
     .login section a {
       text-decoration: none; }
+
+@media only screen and (max-width: 768px) {
+  .login {
+    height: 1200px; }
+    .login section {
+      flex-direction: column;
+      padding: 100px; } }

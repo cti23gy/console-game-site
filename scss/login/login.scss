@@ -1,5 +1,5 @@
 .login {
-    height: 500px;
+  height: 500px;
   width: 100%;
   margin: 0 auto;
 
@@ -81,6 +81,17 @@
 
     a {
       text-decoration: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .login {
+    height: 1200px;
+    section {
+      flex-direction: column;
+      padding: 100px;
+      
     }
   }
 }
